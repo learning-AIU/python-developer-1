@@ -12,7 +12,7 @@ def get_valutes_list():
 
 
 app = Flask(__name__)
-
+app.debug = True
 
 def create_html(valutes):
     text = '<h1>Курс валют</h1>'
@@ -35,6 +35,9 @@ def create_html(valutes):
 def index():
     valutes = get_valutes_list()
     html = create_html(valutes)
+    html = f"""<html lang="ru"><head><meta charset="UTF-8"><title>Курсы</title></head><body>{html}</body></html>"""
+    if app.debug:
+        print(html)
     return html
 
 
